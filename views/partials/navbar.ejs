@@ -1,0 +1,36 @@
+<nav class="navbar navbar-Inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">Codemy</a>
+    </div> 
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/courses" >Browse</a>
+        <% if (!user) { %> 
+          <li> <a href="/login">Login</a></li>
+          <% } else { %>
+            <% if (user.role === 'teacher'){ %>
+              <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                aria-haspopus="true" aria-expanded="false"> Instructor</a>
+                <ul class="dropdown-menu">
+                  <li> <a href="teacher/dashboard">Instructor's Dashboard </a></li>
+                  <li> <a href="/revenue-report">Revenue Report </a></li>
+
+                </ul>
+              </li>
+
+            <% } else { %>
+              <li> <a href="/become-an-instructor.ejs">Instructor's Dashboard </a></li>
+            
+            <% } %>
+         
+            <li> <a href="/profile"> <%= user.profile.name %> </a></li>
+            <li> <a href="/logout"> logout </a></li>
+         
+            <% } %>
+      </li>
+    </ul> 
+  </div>
+
+</nav>
